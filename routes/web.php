@@ -72,59 +72,58 @@
 Route::get('arreglosm',function(){
 
     $paises =["Colombia"=>["capital"=>"Bogota",
-                          "Moneda"=>"peso",
-                          "poblacion"=>50],
+                          "moneda"=>"peso",
+                          "poblacion"=>50,
+                        "ciudades" => ["cali", "medellin"
+                        ]
+                    ],
               "Peru"=>["capital"=>"Lima",
-                       "Moneda"=>"sol",
-                       "poblacion"=>32],
+                       "moneda"=>"sol",
+                       "poblacion"=>32,
+                        "ciudades" => ["Uancayo", "trujillo"
+                        ]
+                    ],
               "Bolivia"=>["capital"=>"La paz",
-                          "Moneda"=>"peso Boliviano",
-                          "poblacion"=>11],
-              "Argentina"=>["capital"=>"Buenos Aires",
-                            "Moneda"=>"",
-                            "poblacion"=>""],
-              "Venezuela"=>["capital"=>"Caracas",
-                            "Moneda"=>"",
-                            "poblacion"=>""],
-              "Brazil"=>["capital"=>"Sao Paulo",
-                        "Moneda"=>"",
-                        "poblacion"=>""],
-              "Paraguay"=>["capital"=>"Asuncion",
-                           "Moneda"=>"",
-                           "poblacion"=>""],
-              "Uruguay"=>["capital"=>"Montevideo",
-                          "Moneda"=>"",
-                          "poblacion"=>""]
+                          "moneda"=>"peso Boliviano",
+                          "poblacion"=>11,
+                          "ciudades" =>  ["cochabamba", "santacruz"
+                          ]
+                ],
+
             ];
 
-    echo"<pre>";
-    var_dump($paises);
-    echo"</pre>";
-//recorrer simple
-foreach($paises as $pais => $informacion){
-    echo"<h1> $pais</h1>";
-    echo $informacion["capital"];
-    echo "<hr/>";
+//     echo"<pre>";
+//     var_dump($paises);
+//     echo"</pre>";
+// //recorrer simple
+// foreach($paises as $pais => $informacion){
+//     echo"<h1> $pais</h1>";
+//     echo $informacion["capital"];
+//     echo "<hr/>";
 
 
 
 
 
-}
-//recorrer con doble foreach
-foreach($paises as $pais => $informacion){
-    echo"<h1> $pais</h1>";
-    foreach ($informacion as $clave =>$valor){
-        echo "$clave: $valor";
-    echo "<hr/>";
-    }
+// }
+// //recorrer con doble foreach
+// foreach($paises as $pais => $informacion){
+//     echo"<h1> $pais</h1>";
+//     foreach ($informacion as $clave =>$valor){
+//         echo "$clave: $valor";
+//     echo "<hr/>";
+//     }
 
 
 
 
 
 
-}
+// }
 
+    //Mostrar la vista:
+    //A la vista se le pueden pasar o adjuntar datos:
+    return view('paises')
+            ->with('paises' , $paises);
 
 });
