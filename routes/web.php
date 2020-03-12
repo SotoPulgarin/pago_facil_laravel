@@ -1,5 +1,7 @@
 <?php
 
+    use App\Producto;
+
 // /*
 // |--------------------------------------------------------------------------
 // | Web Routes
@@ -74,19 +76,19 @@ Route::get('arreglosm',function(){
     $paises =["Colombia"=>["capital"=>"Bogota",
                           "moneda"=>"peso",
                           "poblacion"=>50,
-                        "ciudades" => ["cali", "medellin"
+                        "ciudades" => ["cali", "medellin" , "barranquilla"
                         ]
                     ],
               "Peru"=>["capital"=>"Lima",
                        "moneda"=>"sol",
                        "poblacion"=>32,
-                        "ciudades" => ["Uancayo", "trujillo"
+                        "ciudades" => ["Uancayo", "trujillo", "ancora"
                         ]
                     ],
               "Bolivia"=>["capital"=>"La paz",
                           "moneda"=>"peso Boliviano",
                           "poblacion"=>11,
-                          "ciudades" =>  ["cochabamba", "santacruz"
+                          "ciudades" =>  ["cochabamba", "santacruz", "tihwanaco"
                           ]
                 ],
 
@@ -127,3 +129,32 @@ Route::get('arreglosm',function(){
             ->with('paises' , $paises);
 
 });
+
+Route::get("pruebaprod", function(){
+     //insertar un producto:
+     $p = new Producto();
+     //crear atributos
+     $p->nombre = "bicicleta";
+     $p->valor_unitario = 450.897;
+     //guardar en BD:
+     $p->save();
+});
+
+Route::get('nuevoproducto', function(){
+    //mostrar el formulario de guardar producto
+    return view('productos.crear');
+});
+
+Route::post('guardarproducto', function(){
+    //recibir los  datos que vienen del formulario:
+        $p = new Producto();
+        //crear atributos:
+        $p->nombre = $_POST["nombre"];
+        $p->valor_unitario = $_POST["valor"];
+        //guardar en BD:
+        $p->save();
+        echo "Producto Registrado";
+});
+
+
+

@@ -22,15 +22,18 @@
             <tbody>
                 @foreach($paises as $pais=>$informacion)
                     <tr>
-                        <td rowspan="2"> {{  $pais  }}   </td>
-                        <td rowspan="2"> {{ $informacion["capital"] }}  </td>
-                        <td rowspan="2"> {{ $informacion["moneda"] }}   </td>
-                        <td rowspan="2"> {{ $informacion["poblacion"] }}   </td>
+                        <td rowspan="3"> {{  $pais  }}   </td>
+                        <td rowspan="3"> {{ $informacion["capital"] }}  </td>
+                        <td rowspan="3"> {{ $informacion["moneda"] }}   </td>
+                        <td rowspan="3"> {{ $informacion["poblacion"] }}   </td>
                         <td bgcolor="orange"> {{ $informacion["ciudades"][0] }}   </td>
 
                     </tr>
                     <tr>
-                        <td bgcolor="blue">   {{$informacion["ciudades"][1]}}     </td>
+                        <td bgcolor="blue">   {{ $informacion["ciudades"][1]   }}     </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="blue">   {{ $informacion["ciudades"][2]   }}     </td>
                     </tr>
                 @endforeach
             </tbody>
